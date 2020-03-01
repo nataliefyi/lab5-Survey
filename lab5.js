@@ -122,7 +122,7 @@ function QuestionSection(title, questions =[]){
     };
 }
 
-function Survey(title, sections) {
+function Survey(title, sections =[]) {
     this.toHTML = function () {
         let elements = "<h1>" + title + "</h1>";
         for (let counter = 0; counter < sections.length; counter++) {
@@ -199,19 +199,15 @@ function createSurveyQuestions() {
     return new Survey("PCC Housing Insecurity Survey", [s1, s2]);
 }
 
+function submit() {
+    console.log("submitted");
+}
 
-
-window.onload= function onLoad(){
-
+window.addEventListener("load", function () {
     let survey = createSurveyQuestions();
-
-    function submit() {
-        console.log("submitted");
-    }
-
     document.getElementById("survey").innerHTML = survey.toHTML();
     document.getElementById("submit").addEventListener("click", submit);
-};
+});
 
 
 
