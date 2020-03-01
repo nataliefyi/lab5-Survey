@@ -10,7 +10,7 @@ function Question(title, text) {
 
     this.toHTML = function() {
         let elements = "";
-        elements += "<h3>" + this.title + "</h3>\n";
+        elements += "<h3>" + this.number + ". " + this.title + "</h3>\n";
         elements += "<p>" + this.text + "</p>";
 
         return elements;
@@ -45,7 +45,7 @@ function MultipleChoiceQuestion(title, text, options=[]) {
     MultipleChoiceQuestion.call(this, title, text, options);
 
     let mCQOToHTML = this.toHTML;
-    let otherGetAnswers = this.getAnswers;
+
 
     this.toHTML = function() {
         let elements = mCQOToHTML.call(this);
@@ -79,7 +79,6 @@ function MultipleSelectQuestion(title, text, options=[]) {
     MultipleSelectQuestion.call(this, title, text, options);
 
     let mSQOToHTML = this.toHTML;
-    let otherGetAnswers = this.getAnswers;
 
     this.toHTML = function() {
         let elements = mSQOToHTML.call(this);
@@ -105,7 +104,7 @@ function InputQuestion(title, text){
 
 function QuestionSection(title, questions =[]){
   this.toHTML = function () {
-    let elements = "<h2>" + title + "</h2>";
+    let elements = "<h2>Section " + this.number +": " + title + "</h2>";
      for (let counter = 0; counter < questions.length; counter++) {
         elements += questions[counter].toHTML();
      }
@@ -191,10 +190,21 @@ function createSurveyQuestions() {
         ]
     );
 
+    let allQuestions = [q1, q2, q3, q11, q12];
+
+    for (let counter = 0; counter < allQuestions.length; counter++){
+        allQuestions[counter].number = counter + 1;
+    }
 
     let s1 = new QuestionSection("Demographics", [q1, q2, q3]);
 
     let s2 = new QuestionSection("Housing", [q11, q12]);
+
+    let allSections = [s1, s2];
+
+    for (let counter = 0; counter < allSections.length; counter++){
+        allSections[counter].number = counter + 1;
+    }
 
     return new Survey("PCC Housing Insecurity Survey", [s1, s2]);
 }
