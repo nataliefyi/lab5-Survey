@@ -173,10 +173,13 @@ function QuestionSection(title, questions =[]){
 function Survey(title, sections =[]) {
     this.toHTML = function () {
         let elements = "<h1>" + title + "</h1>";
+
+        elements += '<button onclick = "lightMode()">Light/Dark</button>';
+
         for (let counter = 0; counter < sections.length; counter++) {
             elements += sections[counter].toHTML();
         }
-        elements += "<input id = 'submit' type = 'button' value = 'SUBMIT'>\n";
+        elements += "<button id = 'submit' type = 'button' >Submit Survey</button>\n";
         return elements;
     };
 

@@ -1,9 +1,25 @@
 body {
     color: #ffffe6;
     background-color: #001133;
+    font-size: 1.1em;
+    text-align: center;
+
 }
 
 .lightmode {
-    color: #000000;
-    background-color: #ffffff;
+    color: #001133;
+    background-color: #ffffe6;
+}
+
+button {
+    border-radius: 2em;
+    outline: none;
+    color: #ffffe6;
+    background-color: #321150;
+    font-size: 1.15em;
+
+}
+
+button:hover {
+    box-shadow: .1em 0em .1em .1em, -.1em 0em .1em .1em;
 }
