@@ -1,9 +1,11 @@
 <!doctype html>
-<html>
+<html lang="en">
 	<head>
+        <link rel="stylesheet" type="text/css" href="lab5.css" >
 		<title>Survey Response</title>
 		<script>
-			const ANSWERS = <?php echo urldecode($_POST['answers']); ?>;
+			// noinspection JSAnnotator
+            const ANSWERS = <?php echo urldecode($_POST['answers']); ?>;
 			
 			
 			function buildResponseTable() {
